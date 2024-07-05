@@ -1,5 +1,5 @@
 "use client";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { AreaChart, Area, XAxis, YAxis, Tooltip } from "recharts";
 
 const data = [
   {

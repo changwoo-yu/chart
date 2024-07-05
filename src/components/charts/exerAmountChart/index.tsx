@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from "recharts";
+import { Radar, RadarChart, PolarAngleAxis, PolarRadiusAxis } from "recharts";
 
 console.error = (...m: any) => {
   if (/defaultProps/.test(m[0])) return;
@@ -91,19 +91,9 @@ export default function ExerAmountChart() {
         polarRadius: [35.61, 54.95, 78.35, 99.72, 120],
         numberOfSides: 5,
       })}
-      {/* <PolarGrid stroke="blue" /> */}
       <PolarAngleAxis dataKey="subject" style={{ fontSize: "30", fontWeight: "500" }} />
       <PolarRadiusAxis />
       <Radar name="Mike" dataKey="A" stroke="#00ACF2" fill="#B2E6FA" fillOpacity={0.6} />
     </RadarChart>
   );
 }
-
-// const calculateRadii = ({
-//   polarRadius,
-// }: Pick<PolarGridParam, 'polarRadius'>) => {
-//   return polarRadius.map((sideLength: number) => {
-//     const radius = Math.sqrt(Math.pow(sideLength, 2) / 2);
-//     return radius;
-//   });
-// };
