@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
+import React, { useId } from "react";
 import { Radar, RadarChart, PolarAngleAxis, PolarRadiusAxis } from "recharts";
+import CustomTick from "../customTick";
 
 console.error = (...m: any) => {
   if (/defaultProps/.test(m[0])) return;
@@ -64,8 +65,8 @@ const CustomPolarGrid = ({ cx, cy, polarRadius, numberOfSides }: any) => {
     <g className="recharts-polar-grid">
       {polarRadius.map((radius: any, i: any) => {
         const points = calculatePolygonPoints(cx, cy, radius, numberOfSides);
-        const strokeColor = i === polarRadius.length - 1 ? "blue" : "green";
-        const borderColor = i === polarRadius.length - 1 ? "10" : "1";
+        const strokeColor = i === polarRadius.length - 1 ? "#9aedba" : "#62f0dd";
+        const borderColor = i === polarRadius.length - 1 ? "5" : "1";
 
         return (
           <path
@@ -83,17 +84,22 @@ const CustomPolarGrid = ({ cx, cy, polarRadius, numberOfSides }: any) => {
 };
 
 export default function ExerAmountChart() {
+  const chartId = useId();
   return (
-    <RadarChart cx={300} cy={250} outerRadius={120} width={500} height={500} data={data}>
+    <RadarChart id={chartId} cx={300} cy={250} outerRadius={120} width={600} height={500} data={data}>
       {CustomPolarGrid({
         cx: 300,
         cy: 250,
         polarRadius: [35.61, 54.95, 78.35, 99.72, 120],
         numberOfSides: 5,
       })}
-      <PolarAngleAxis dataKey="subject" style={{ fontSize: "30", fontWeight: "500" }} />
+      <PolarAngleAxis
+        dataKey="subject"
+        tick={(props) => <CustomTick {...props} />}
+        // style={{ stroke: "#57e68e", fontSize: "20", fontWeight: "300" }}
+      />
       <PolarRadiusAxis />
-      <Radar name="Mike" dataKey="A" stroke="#00ACF2" fill="#B2E6FA" fillOpacity={0.6} />
+      <Radar isAnimationActive={false} name="Mike" dataKey="A" stroke="#f05de8" fill="#b6f0cc" fillOpacity={0.6} />
     </RadarChart>
   );
 }

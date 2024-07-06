@@ -1,9 +1,9 @@
-import ExerAmountChart from "@/components/charts/exerAmountChart";
+import InbodyAddChart from "@/components/additionalChart/inbodyAddChart";
 
 export default function Home() {
   return (
     <>
-      <ExerAmountChart />
+      <InbodyAddChart />
     </>
   );
 }
