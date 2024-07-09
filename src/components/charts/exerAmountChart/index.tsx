@@ -83,10 +83,10 @@ const CustomPolarGrid = ({ cx, cy, polarRadius, numberOfSides }: any) => {
   );
 };
 
-export default function ExerAmountChart() {
+export default function ExerAmountChart({ border }: { border: string }) {
   const chartId = useId();
   return (
-    <RadarChart id={chartId} cx={300} cy={250} outerRadius={120} width={600} height={500} data={data}>
+    <RadarChart className={`${border} `} id={chartId} cy={250} outerRadius={120} width={600} height={400} data={data}>
       {CustomPolarGrid({
         cx: 300,
         cy: 250,
